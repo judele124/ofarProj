@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="mx-5">
+            <h1>walcom to docoment</h1>
+            <img src="https://toystore.co.il/wp-content/uploads/2018/05/logo_new_trns.png" alt="logo toy">
+        </div>
+        <h2>Here you can find all the information about the toy store's server</h2>
+        <br>
+        <br>
+        <h2>Toys API</h2>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                <th> HTTP Method</th>
+                <th>Route</th>
+                <th> Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>GET</td>
+                    <td>
+                        <a target="_blank" href="/toys" >toys</a>
+                    </td>
+                    <td>Returns a list of toys according to the query parameters.</td>
+                </tr>
+            </tbody>
+        </table>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Query Parameter</th>
+                <th>Description</th>
+                <th>Default</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <a target="_blank" href="/toys?limit=5">limit</a>
+                </td>
+                <td>The number of objects to return in the response.</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>
+                    <a target="_blank" href="/toys?limit=2&page=1">page</a>
+                </td>
+                <td>Page number for pagination.</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>
+                    <a target="_blank" href="/toys?sort=price">sort</a>
+                </td>
+                <td>Sort order from big to small.</td>
+                <td>price</td>
+            </tr>
+            <tr>
+                <td>
+                    <a target="_blank" href="/toys?reverse=yes">reverse</a>
+                </td>
+                <td>Sort order from small to big.</td>
+                <td>From big to small</td>
+            </tr>
+            <tr>
+                <td>
+                    <a target="_blank" href="/toys?s=gta">s</a>
+                </td>
+                <td>Search by name and info.</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td>
+                    <a target="_blank" href="/toys?cat=general">cat</a>
+                </td>
+                <td>Search by category</td>
+                <td>None</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+            <th> HTTP Method</th>
+            <th>Route</th>
+            <th> Description</th>
+            <th> Parameters / Request Body</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GET</td>
+                <td>
+                    /toys/single/:id
+                </td>
+                <td>Returns a single toy by its ID.</td>
+                <td>
+                    <P> id: the ID of the toy to retrieve.</P>
+                    <a target="_blank" href="/toys/single/64f46142409942f6717d7858" >/toys/single/64f46142409942f6717d7858</a>
+                </td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>
+                    /toys
+                </td>
+                <td>Adds a new toy.
+                    Token is required!</td>
+                <td>
+                    <p>Request Body: Toy data to be added in the following format.</p>
+                     <p> price: 1-99999</p>
+                   <p> img_url is allowed and not required</p>
+                   <pre> 
+{
+    name: String,
+    info: String,
+    category: String,
+    price: Number,
+    img_url: String 
+}
+                </pre>
+                </td>
+            </tr>
+            <tr>
+                <td>PUT</td>
+                <td>
+                    /toys/:id
+                </td>
+                <td>
+                    Updates an existing toy.
+                    Token is required!
+                </td>
+                <td>
+                    <P> id: the ID of the toy to update.</P>
+                    <p>Request Body: Toy data to be updated in the following fornat</p>
+                    <p> price: 1-999999</p>
+                    <p> img_url is allowed and not required</p>
+                    <pre> 
+ {
+     name: String,
+     info: String,
+     category: String,
+     price: Number,
+     img_url: String 
+ }
+                 </pre>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    DELETE
+                </td>
+                <td>
+                    /toys/:id
+                </td>
+                <td>Deletes a toy by its ID.
+                    Token is required!</td>
+                <td>
+                    <P> id: the ID of the toy to delete.</P>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <h2>Users API</h2>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+            <th> HTTP Method</th>
+            <th>Route</th>
+            <th> Description</th>
+            <th> Parameters / Request Body</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>POST</td>
+                <td>
+                    /users
+                </td>
+                <td>Create a new user</td>
+                <td>
+                   <pre> 
+{
+    name: String,
+    email: String,
+    password: String,
+}
+                </pre>
+                </td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>
+                    /users/login
+                </td>
+                <td>
+                    Authenticate a user and receive a JWT token in response
+                </td>
+                <td>
+                    <pre> 
+{
+    email: String,
+    password: String,
+}
+                 </pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
